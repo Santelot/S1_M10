@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M10</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente y saludar a los genios.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy nos sumergiremos en un reto especial: ¡diseñarán una antena satelital en TinkerCAD! Este desafío combina creatividad y precisión, así que prepárense para sorprender."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Si están listos para ensamblar las 24 piezas de su antena, levanten ambas manos hacia el cielo. Si todavía necesitan inspiración, pónganse una mano en la barbilla, como si estuvieran pensando."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos para agradecer esta oportunidad de diseñar juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos importantes: 1. Crear una antena satelital en TinkerCAD usando al menos 24 formas básicas. 2. Ensamblar las formas con creatividad y precisión para un diseño funcional y atractivo."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">✨ Actividad 2: State Change ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Reforzar la empatía y colaboración con un saludo motivador.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Saludo de Suerte".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar con nuestro reto, hagamos una pausa rápida para repartir un poco de buena vibra. Durante los próximos segundos, saluden con la mano a todos los compañeros a su alrededor y díganles: '¡Suerte en el reto!'. Este pequeño gesto refuerza la empatía y el trabajo colaborativo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 7 "Cronómetro - 30 segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ¿vieron cómo un saludo puede mejorar el ambiente? Este pequeño ejercicio no solo genera empatía, sino que también refuerza la colaboración. Recordar que todos estamos trabajando juntos, incluso en diferentes equipos, hace que los retos sean más llevaderos. ¡Estamos listos para enfrentarnos al Challenge!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 9 minutos</div>
+        <div class="subtitle">Formación de parejas y planificación del reto.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Nuevas Parejas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, esta vez quiero que trabajen con alguien con quien no hayan colaborado antes. Tienen un minuto para elegir a su nuevo compañero. ¡Aprovechen esta oportunidad para compartir ideas frescas y aprender algo nuevo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Un representante de cada equipo pasará por su Magic Tablet. Mientras tanto, piensen en los pasos iniciales para su diseño. Tienen un minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 13 "Niveles del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a construir una antena satelital en TinkerCAD. Tienen tres niveles de reto: 
+                <ul>
+                    <li><strong>Rookie:</strong> Diseñen una antena con al menos 24 formas básicas.</li>
+                    <li><strong>Master:</strong> (+) Usen al menos 48 formas básicas para su antena.</li>
+                    <li><strong>Hacker:</strong> (+) Añadan al menos dos zonas con Greebling: muchos detalles pequeños que le dan un acabado espectacular.</li>
+                </ul>
+                "</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 14 "Planeación de Tareas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Tienen tres minutos para organizar las tareas en su tablero Kanban. Decidan quién se encargará de cada parte del diseño y asegúrense de que las tareas más complejas se prioricen correctamente. Una buena organización hará toda la diferencia en este reto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (3 minutos):</strong> Proyectar Diapositiva 15 "Cronómetro - 3 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 32.5 minutos</div>
+        <div class="subtitle">Diseñar una antena satelital combinando creatividad y precisión en TinkerCAD.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 16 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de poner en práctica sus habilidades. Hoy diseñarán una antena satelital combinando creatividad y precisión. Pueden elegir el nivel de reto que mejor se adapte a su equipo. ¡Prepárense para construir algo impresionante!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 17 "Niveles del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Estos son los tres niveles del reto de hoy: 
+                <ul>
+                    <li><strong>Rookie:</strong> Diseñen una antena con al menos 24 formas básicas.</li>
+                    <li><strong>Master:</strong> (+) Utilicen al menos 48 formas básicas para su estructura.</li>
+                    <li><strong>Hacker:</strong> (+) Agreguen dos zonas con Greebling, una técnica que les explicaré en un momento."</li>
+                </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (2 minutos):</strong> Proyectar Diapositiva 18 "¿Qué es Greebling?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora les hablaré de una técnica fascinante llamada Greebling. Esta técnica se originó en la creación de modelos para películas, especialmente en Star Wars. Los artistas agregaban pequeños detalles aparentemente aleatorios en superficies lisas, como naves espaciales, para hacerlas ver más complejas y realistas. Por ejemplo, ¿alguna vez notaron los miles de pequeños paneles y tuberías en el Halcón Milenario? ¡Eso es Greebling! La idea es simple: muchos detalles minúsculos crean la ilusión de algo mucho más avanzado de lo que realmente es. Esta técnica es tan efectiva que se usa en videojuegos, sets de películas y hasta en arquitectura. ¡Ahora ustedes podrán darle ese toque profesional a su antena!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (25 minutos):</strong> Proyectar Diapositiva 19 "Cronómetro - 25 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Galería de Arte Espacial".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora convertiremos el salón en una galería de arte espacial. Dejen sus diseños abiertos en las Magic Tablets y tómense tres minutos para explorar las creaciones de sus compañeros. Observen cómo cada equipo resolvió los retos y tomen inspiración para futuros proyectos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (3 minutos):</strong> Proyectar Diapositiva 21 "Cronómetro - 3 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 22 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy completamos todos los objetivos de la misión: 1. Diseñaron una antena satelital usando al menos 24 formas básicas. 2. Aplicaron la técnica del Greebling y organizaron su trabajo con precisión. ¡Felicidades, Genios, han hecho un trabajo impresionante!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1 minuto):</strong> Proyectar Diapositiva 23 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente trabajo, Genios! Han demostrado creatividad y habilidad en este reto. Todos se llevan Mon-e por su esfuerzo y dedicación."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor the Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Devolver las Magic Tablets y ordenar el espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 23 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de despedirnos, es momento de hacer Honor al Dojo. Cada equipo pase al frente a devolver su Magic Tablet y asegúrense de que su área de trabajo quede limpia y ordenada. Un espacio limpio refleja el respeto por lo que hacemos y por quienes compartimos este espacio. ¡Gran trabajo hoy!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
